@@ -1,0 +1,1295 @@
+% This LaTeX was auto-generated from MATLAB code.
+% To make changes, update the MATLAB code and export to LaTeX again.
+
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{epstopdf}
+\usepackage{matlab}
+
+\sloppy
+\epstopdfsetup{outdir=./}
+\graphicspath{ {./lagrange_images/} }
+
+\begin{document}
+
+\begin{matlabcode}
+syms x(t) y(t) a(t) phi1(t) phi2(t) OC e Ic I0 m mw len hgt kx ky bx by...
+    g x_dot a_dot y_dot phi1_dot phi2_dot xc1 xc2 yc1 yc2 xc1_dot xc2_dot yc1_dot yc2_dot %hgt - od srodka do dolnej krawedzi(w osi y) len - od srodka do osi sprezyny(w osi x)
+
+x_dot = diff(x, t)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+x_dot(t) = 
+    $\displaystyle \frac{\partial }{\partial t}\;x\left(t\right)$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+y_dot = diff(y, t)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+y_dot(t) = 
+    $\displaystyle \frac{\partial }{\partial t}\;y\left(t\right)$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+a_dot = diff(a, t)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+a_dot(t) = 
+    $\displaystyle \frac{\partial }{\partial t}\;a\left(t\right)$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+phi1_dot = diff(phi1, t)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+phi1_dot(t) = 
+    $\displaystyle \frac{\partial }{\partial t}\;\varphi_1 \left(t\right)$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+phi2_dot = diff(phi2, t)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+phi2_dot(t) = 
+    $\displaystyle \frac{\partial }{\partial t}\;\varphi_2 \left(t\right)$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+xc1 = -OC*cos((pi/3)-a)-e*cos(phi1)+x
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+xc1(t) = 
+    $\displaystyle x\left(t\right)-e\,\cos \left(\varphi_1 \left(t\right)\right)-\textrm{OC}\,\cos \left(\frac{\pi }{3}-a\left(t\right)\right)$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+yc1 = OC*sin((pi/3)-a)+e*sin(phi1)+y
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+yc1(t) = 
+    $\displaystyle y\left(t\right)+e\,\sin \left(\varphi_1 \left(t\right)\right)+\textrm{OC}\,\sin \left(\frac{\pi }{3}-a\left(t\right)\right)$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+xc1_dot = diff(xc1, t)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+xc1_dot(t) = 
+    $\displaystyle \frac{\partial }{\partial t}\;x\left(t\right)-\textrm{OC}\,\sin \left(\frac{\pi }{3}-a\left(t\right)\right)\,\frac{\partial }{\partial t}\;a\left(t\right)+e\,\sin \left(\varphi_1 \left(t\right)\right)\,\frac{\partial }{\partial t}\;\varphi_1 \left(t\right)$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+yc1_dot = diff(yc1, t)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+yc1_dot(t) = 
+    $\displaystyle \frac{\partial }{\partial t}\;y\left(t\right)-\textrm{OC}\,\cos \left(\frac{\pi }{3}-a\left(t\right)\right)\,\frac{\partial }{\partial t}\;a\left(t\right)+e\,\cos \left(\varphi_1 \left(t\right)\right)\,\frac{\partial }{\partial t}\;\varphi_1 \left(t\right)$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+xc2 = OC*cos((pi/3)-a)+e*cos(phi2)+x
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+xc2(t) = 
+    $\displaystyle x\left(t\right)+e\,\cos \left(\varphi_2 \left(t\right)\right)+\textrm{OC}\,\cos \left(\frac{\pi }{3}-a\left(t\right)\right)$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+yc2 = OC*sin((pi/3)-a)+e*sin(phi2)+y
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+yc2(t) = 
+    $\displaystyle y\left(t\right)+e\,\sin \left(\varphi_2 \left(t\right)\right)+\textrm{OC}\,\sin \left(\frac{\pi }{3}-a\left(t\right)\right)$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+xc2_dot = diff(xc2, t)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+xc2_dot(t) = 
+    $\displaystyle \frac{\partial }{\partial t}\;x\left(t\right)+\textrm{OC}\,\sin \left(\frac{\pi }{3}-a\left(t\right)\right)\,\frac{\partial }{\partial t}\;a\left(t\right)-e\,\sin \left(\varphi_2 \left(t\right)\right)\,\frac{\partial }{\partial t}\;\varphi_2 \left(t\right)$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+yc2_dot = diff(yc2, t)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+yc2_dot(t) = 
+    $\displaystyle \frac{\partial }{\partial t}\;y\left(t\right)-\textrm{OC}\,\cos \left(\frac{\pi }{3}-a\left(t\right)\right)\,\frac{\partial }{\partial t}\;a\left(t\right)+e\,\cos \left(\varphi_2 \left(t\right)\right)\,\frac{\partial }{\partial t}\;\varphi_2 \left(t\right)$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+
+T = 0.5*m*(x_dot^2+y_dot^2) + 0.5*Ic*a_dot^2 + 0.5*mw*xc1_dot^2 + 0.5*mw*yc1_dot^2 + 0.5*I0*phi1_dot^2+...
+    0.5*mw*xc2_dot^2 + 0.5*mw*yc2_dot^2 + 0.5*I0*phi2_dot^2
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+T(t) = 
+    $\displaystyle \begin{array}{l}
+\frac{\textrm{mw}\,{{\left(\frac{\partial }{\partial t}\;y\left(t\right)-\sigma_2 +e\,\cos \left(\varphi_1 \left(t\right)\right)\,\frac{\partial }{\partial t}\;\varphi_1 \left(t\right)\right)}}^2 }{2}+\frac{\textrm{mw}\,{{\left(\frac{\partial }{\partial t}\;y\left(t\right)-\sigma_2 +e\,\cos \left(\varphi_2 \left(t\right)\right)\,\frac{\partial }{\partial t}\;\varphi_2 \left(t\right)\right)}}^2 }{2}+\frac{\textrm{mw}\,{{\left(\frac{\partial }{\partial t}\;x\left(t\right)-\sigma_1 +e\,\sin \left(\varphi_1 \left(t\right)\right)\,\frac{\partial }{\partial t}\;\varphi_1 \left(t\right)\right)}}^2 }{2}+\frac{\textrm{mw}\,{{\left(\frac{\partial }{\partial t}\;x\left(t\right)+\sigma_1 -e\,\sin \left(\varphi_2 \left(t\right)\right)\,\frac{\partial }{\partial t}\;\varphi_2 \left(t\right)\right)}}^2 }{2}+\frac{m\,{\left({{\left(\frac{\partial }{\partial t}\;x\left(t\right)\right)}}^2 +{{\left(\frac{\partial }{\partial t}\;y\left(t\right)\right)}}^2 \right)}}{2}+\frac{\textrm{Ic}\,{{\left(\frac{\partial }{\partial t}\;a\left(t\right)\right)}}^2 }{2}+\frac{I_0 \,{{\left(\frac{\partial }{\partial t}\;\varphi_1 \left(t\right)\right)}}^2 }{2}+\frac{I_0 \,{{\left(\frac{\partial }{\partial t}\;\varphi_2 \left(t\right)\right)}}^2 }{2}\\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 =\textrm{OC}\,\sin \left(\sigma_3 \right)\,\frac{\partial }{\partial t}\;a\left(t\right)\\
+\mathrm{}\\
+\;\;\sigma_2 =\textrm{OC}\,\cos \left(\sigma_3 \right)\,\frac{\partial }{\partial t}\;a\left(t\right)\\
+\mathrm{}\\
+\;\;\sigma_3 =\frac{\pi }{3}-a\left(t\right)
+\end{array}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+
+V = m*g*y + mw*g*yc1 + mw*g*yc2 + 0.5*kx*(-x*hgt*a*x)^2 + 0.5*ky*(y+len*a)^2
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+V(t) = 
+    $\displaystyle \begin{array}{l}
+\frac{\textrm{ky}\,{{\left(y\left(t\right)+\textrm{len}\,a\left(t\right)\right)}}^2 }{2}+g\,\textrm{mw}\,{\left(y\left(t\right)+e\,\sin \left(\varphi_1 \left(t\right)\right)+\sigma_1 \right)}+g\,\textrm{mw}\,{\left(y\left(t\right)+e\,\sin \left(\varphi_2 \left(t\right)\right)+\sigma_1 \right)}+g\,m\,y\left(t\right)+\frac{{\textrm{hgt}}^2 \,\textrm{kx}\,{a\left(t\right)}^2 \,{x\left(t\right)}^4 }{2}\\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 =\textrm{OC}\,\sin \left(\frac{\pi }{3}-a\left(t\right)\right)
+\end{array}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+L = T-V
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+L(t) = 
+    $\displaystyle \begin{array}{l}
+\frac{\textrm{mw}\,{{\left(\frac{\partial }{\partial t}\;y\left(t\right)-\sigma_2 +e\,\cos \left(\varphi_1 \left(t\right)\right)\,\frac{\partial }{\partial t}\;\varphi_1 \left(t\right)\right)}}^2 }{2}-\frac{\textrm{ky}\,{{\left(y\left(t\right)+\textrm{len}\,a\left(t\right)\right)}}^2 }{2}+\frac{\textrm{mw}\,{{\left(\frac{\partial }{\partial t}\;y\left(t\right)-\sigma_2 +e\,\cos \left(\varphi_2 \left(t\right)\right)\,\frac{\partial }{\partial t}\;\varphi_2 \left(t\right)\right)}}^2 }{2}+\frac{\textrm{mw}\,{{\left(\frac{\partial }{\partial t}\;x\left(t\right)-\sigma_1 +e\,\sin \left(\varphi_1 \left(t\right)\right)\,\frac{\partial }{\partial t}\;\varphi_1 \left(t\right)\right)}}^2 }{2}+\frac{\textrm{mw}\,{{\left(\frac{\partial }{\partial t}\;x\left(t\right)+\sigma_1 -e\,\sin \left(\varphi_2 \left(t\right)\right)\,\frac{\partial }{\partial t}\;\varphi_2 \left(t\right)\right)}}^2 }{2}+\frac{m\,{\left({{\left(\frac{\partial }{\partial t}\;x\left(t\right)\right)}}^2 +{{\left(\frac{\partial }{\partial t}\;y\left(t\right)\right)}}^2 \right)}}{2}+\frac{\textrm{Ic}\,{{\left(\frac{\partial }{\partial t}\;a\left(t\right)\right)}}^2 }{2}+\frac{I_0 \,{{\left(\frac{\partial }{\partial t}\;\varphi_1 \left(t\right)\right)}}^2 }{2}+\frac{I_0 \,{{\left(\frac{\partial }{\partial t}\;\varphi_2 \left(t\right)\right)}}^2 }{2}-g\,\textrm{mw}\,{\left(y\left(t\right)+e\,\sin \left(\varphi_1 \left(t\right)\right)+\textrm{OC}\,\sin \left(\sigma_3 \right)\right)}-g\,\textrm{mw}\,{\left(y\left(t\right)+e\,\sin \left(\varphi_2 \left(t\right)\right)+\textrm{OC}\,\sin \left(\sigma_3 \right)\right)}-g\,m\,y\left(t\right)-\frac{{\textrm{hgt}}^2 \,\textrm{kx}\,{a\left(t\right)}^2 \,{x\left(t\right)}^4 }{2}\\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 =\textrm{OC}\,\sin \left(\sigma_3 \right)\,\frac{\partial }{\partial t}\;a\left(t\right)\\
+\mathrm{}\\
+\;\;\sigma_2 =\textrm{OC}\,\cos \left(\sigma_3 \right)\,\frac{\partial }{\partial t}\;a\left(t\right)\\
+\mathrm{}\\
+\;\;\sigma_3 =\frac{\pi }{3}-a\left(t\right)
+\end{array}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+N = 0.5*bx*(-x_dot-hgt*a_dot)^2+0.5*by*(y_dot+len*a_dot)^2
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+N(t) = 
+    $\displaystyle \frac{\textrm{bx}\,{{\left(\textrm{hgt}\,\frac{\partial }{\partial t}\;a\left(t\right)+\frac{\partial }{\partial t}\;x\left(t\right)\right)}}^2 }{2}+\frac{\textrm{by}\,{{\left(\textrm{len}\,\frac{\partial }{\partial t}\;a\left(t\right)+\frac{\partial }{\partial t}\;y\left(t\right)\right)}}^2 }{2}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+
+dldx = functionalDerivative(L, x)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldx(t) = 
+    $\displaystyle \begin{array}{l}
+e\,\textrm{mw}\,\cos \left(\varphi_2 \left(t\right)\right)\,{{\left(\frac{\partial }{\partial t}\;\varphi_2 \left(t\right)\right)}}^2 -2\,\textrm{mw}\,\sigma_1 -2\,{\textrm{hgt}}^2 \,\textrm{kx}\,{a\left(t\right)}^2 \,{x\left(t\right)}^3 -e\,\textrm{mw}\,\cos \left(\varphi_1 \left(t\right)\right)\,{{\left(\frac{\partial }{\partial t}\;\varphi_1 \left(t\right)\right)}}^2 -m\,\sigma_1 -e\,\textrm{mw}\,\sin \left(\varphi_1 \left(t\right)\right)\,\frac{\partial^2 }{\partial t^2 }\;\varphi_1 \left(t\right)+e\,\textrm{mw}\,\sin \left(\varphi_2 \left(t\right)\right)\,\frac{\partial^2 }{\partial t^2 }\;\varphi_2 \left(t\right)\\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 =\frac{\partial^2 }{\partial t^2 }\;x\left(t\right)
+\end{array}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldy = functionalDerivative(L, y)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldy(t) = 
+    $\displaystyle \begin{array}{l}
+e\,\textrm{mw}\,\sin \left(\varphi_1 \left(t\right)\right)\,{{\left(\frac{\partial }{\partial t}\;\varphi_1 \left(t\right)\right)}}^2 -2\,\textrm{mw}\,\sigma_2 -g\,m-2\,g\,\textrm{mw}-\textrm{ky}\,y\left(t\right)-\textrm{ky}\,\textrm{len}\,a\left(t\right)-m\,\sigma_2 +e\,\textrm{mw}\,\sin \left(\varphi_2 \left(t\right)\right)\,{{\left(\frac{\partial }{\partial t}\;\varphi_2 \left(t\right)\right)}}^2 -e\,\textrm{mw}\,\cos \left(\varphi_1 \left(t\right)\right)\,\frac{\partial^2 }{\partial t^2 }\;\varphi_1 \left(t\right)-e\,\textrm{mw}\,\cos \left(\varphi_2 \left(t\right)\right)\,\frac{\partial^2 }{\partial t^2 }\;\varphi_2 \left(t\right)+2\,\textrm{OC}\,\textrm{mw}\,\sin \left(\sigma_1 \right)\,{{\left(\frac{\partial }{\partial t}\;a\left(t\right)\right)}}^2 +2\,\textrm{OC}\,\textrm{mw}\,\cos \left(\sigma_1 \right)\,\frac{\partial^2 }{\partial t^2 }\;a\left(t\right)\\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 =\frac{\pi }{3}-a\left(t\right)\\
+\mathrm{}\\
+\;\;\sigma_2 =\frac{\partial^2 }{\partial t^2 }\;y\left(t\right)
+\end{array}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dlda = functionalDerivative(L, a)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dlda(t) = 
+    $\displaystyle \begin{array}{l}
+2\,\textrm{OC}\,g\,\textrm{mw}\,\cos \left(\sigma_4 \right)-\textrm{ky}\,\textrm{len}\,y\left(t\right)-\textrm{ky}\,{\textrm{len}}^2 \,a\left(t\right)-\textrm{Ic}\,\sigma_1 -2\,{\textrm{OC}}^2 \,\textrm{mw}\,{\cos \left(\sigma_4 \right)}^2 \,\sigma_1 -{\textrm{hgt}}^2 \,\textrm{kx}\,a\left(t\right)\,{x\left(t\right)}^4 -2\,{\textrm{OC}}^2 \,\textrm{mw}\,{\sin \left(\sigma_4 \right)}^2 \,\sigma_1 +2\,\textrm{OC}\,\textrm{mw}\,\cos \left(\sigma_4 \right)\,\frac{\partial^2 }{\partial t^2 }\;y\left(t\right)+\textrm{OC}\,e\,\textrm{mw}\,\cos \left(\varphi_1 \left(t\right)\right)\,\sin \left(\sigma_4 \right)\,\sigma_3 -\textrm{OC}\,e\,\textrm{mw}\,\sin \left(\varphi_1 \left(t\right)\right)\,\cos \left(\sigma_4 \right)\,\sigma_3 +\textrm{OC}\,e\,\textrm{mw}\,\cos \left(\varphi_2 \left(t\right)\right)\,\sin \left(\sigma_4 \right)\,\sigma_2 -\textrm{OC}\,e\,\textrm{mw}\,\sin \left(\varphi_2 \left(t\right)\right)\,\cos \left(\sigma_4 \right)\,\sigma_2 +\textrm{OC}\,e\,\textrm{mw}\,\cos \left(\varphi_1 \left(t\right)\right)\,\cos \left(\sigma_4 \right)\,\sigma_6 +\textrm{OC}\,e\,\textrm{mw}\,\cos \left(\varphi_2 \left(t\right)\right)\,\cos \left(\sigma_4 \right)\,\sigma_5 +\textrm{OC}\,e\,\textrm{mw}\,\sin \left(\varphi_1 \left(t\right)\right)\,\sin \left(\sigma_4 \right)\,\sigma_6 +\textrm{OC}\,e\,\textrm{mw}\,\sin \left(\varphi_2 \left(t\right)\right)\,\sin \left(\sigma_4 \right)\,\sigma_5 \\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 =\frac{\partial^2 }{\partial t^2 }\;a\left(t\right)\\
+\mathrm{}\\
+\;\;\sigma_2 ={{\left(\frac{\partial }{\partial t}\;\varphi_2 \left(t\right)\right)}}^2 \\
+\mathrm{}\\
+\;\;\sigma_3 ={{\left(\frac{\partial }{\partial t}\;\varphi_1 \left(t\right)\right)}}^2 \\
+\mathrm{}\\
+\;\;\sigma_4 =\frac{\pi }{3}-a\left(t\right)\\
+\mathrm{}\\
+\;\;\sigma_5 =\frac{\partial^2 }{\partial t^2 }\;\varphi_2 \left(t\right)\\
+\mathrm{}\\
+\;\;\sigma_6 =\frac{\partial^2 }{\partial t^2 }\;\varphi_1 \left(t\right)
+\end{array}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldphi1 = functionalDerivative(L, phi1)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldphi1(t) = 
+    $\displaystyle \begin{array}{l}
+\textrm{OC}\,e\,\textrm{mw}\,\cos \left(\varphi_1 \left(t\right)\right)\,\sin \left(\sigma_2 \right)\,\sigma_3 -e^2 \,\textrm{mw}\,{\cos \left(\varphi_1 \left(t\right)\right)}^2 \,\sigma_1 -e^2 \,\textrm{mw}\,{\sin \left(\varphi_1 \left(t\right)\right)}^2 \,\sigma_1 -e\,\textrm{mw}\,\cos \left(\varphi_1 \left(t\right)\right)\,\frac{\partial^2 }{\partial t^2 }\;y\left(t\right)-e\,\textrm{mw}\,\sin \left(\varphi_1 \left(t\right)\right)\,\frac{\partial^2 }{\partial t^2 }\;x\left(t\right)-e\,g\,\textrm{mw}\,\cos \left(\varphi_1 \left(t\right)\right)-I_0 \,\sigma_1 -\textrm{OC}\,e\,\textrm{mw}\,\sin \left(\varphi_1 \left(t\right)\right)\,\cos \left(\sigma_2 \right)\,\sigma_3 +\textrm{OC}\,e\,\textrm{mw}\,\cos \left(\varphi_1 \left(t\right)\right)\,\cos \left(\sigma_2 \right)\,\sigma_4 +\textrm{OC}\,e\,\textrm{mw}\,\sin \left(\varphi_1 \left(t\right)\right)\,\sin \left(\sigma_2 \right)\,\sigma_4 \\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 =\frac{\partial^2 }{\partial t^2 }\;\varphi_1 \left(t\right)\\
+\mathrm{}\\
+\;\;\sigma_2 =\frac{\pi }{3}-a\left(t\right)\\
+\mathrm{}\\
+\;\;\sigma_3 ={{\left(\frac{\partial }{\partial t}\;a\left(t\right)\right)}}^2 \\
+\mathrm{}\\
+\;\;\sigma_4 =\frac{\partial^2 }{\partial t^2 }\;a\left(t\right)
+\end{array}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldphi2 = functionalDerivative(L, phi2)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldphi2(t) = 
+    $\displaystyle \begin{array}{l}
+e\,\textrm{mw}\,\sin \left(\varphi_2 \left(t\right)\right)\,\frac{\partial^2 }{\partial t^2 }\;x\left(t\right)-e^2 \,\textrm{mw}\,{\cos \left(\varphi_2 \left(t\right)\right)}^2 \,\sigma_1 -e^2 \,\textrm{mw}\,{\sin \left(\varphi_2 \left(t\right)\right)}^2 \,\sigma_1 -e\,\textrm{mw}\,\cos \left(\varphi_2 \left(t\right)\right)\,\frac{\partial^2 }{\partial t^2 }\;y\left(t\right)-I_0 \,\sigma_1 -e\,g\,\textrm{mw}\,\cos \left(\varphi_2 \left(t\right)\right)+\textrm{OC}\,e\,\textrm{mw}\,\cos \left(\varphi_2 \left(t\right)\right)\,\sin \left(\sigma_2 \right)\,\sigma_3 -\textrm{OC}\,e\,\textrm{mw}\,\sin \left(\varphi_2 \left(t\right)\right)\,\cos \left(\sigma_2 \right)\,\sigma_3 +\textrm{OC}\,e\,\textrm{mw}\,\cos \left(\varphi_2 \left(t\right)\right)\,\cos \left(\sigma_2 \right)\,\sigma_4 +\textrm{OC}\,e\,\textrm{mw}\,\sin \left(\varphi_2 \left(t\right)\right)\,\sin \left(\sigma_2 \right)\,\sigma_4 \\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 =\frac{\partial^2 }{\partial t^2 }\;\varphi_2 \left(t\right)\\
+\mathrm{}\\
+\;\;\sigma_2 =\frac{\pi }{3}-a\left(t\right)\\
+\mathrm{}\\
+\;\;\sigma_3 ={{\left(\frac{\partial }{\partial t}\;a\left(t\right)\right)}}^2 \\
+\mathrm{}\\
+\;\;\sigma_4 =\frac{\partial^2 }{\partial t^2 }\;a\left(t\right)
+\end{array}$
+\end{matlabsymbolicoutput}
+
+\begin{par}
+\begin{flushleft}
+Tutaj zaczyna sie kombinowanie - matlab nie umie rozniczkowac po np. xprim - zamieniamy wszystkie funkcje symboliczne na zmienne
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+syms xvar yvar avar phi1var phi2var
+syms x_dotvar y_dotvar a_dotvar phi1_dotvar phi2_dotvar
+Lvar = subs(L, x, xvar)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+Lvar(t) = 
+    $\displaystyle \begin{array}{l}
+\frac{\textrm{mw}\,{{\left(\frac{\partial }{\partial t}\;y\left(t\right)-\sigma_2 +e\,\cos \left(\varphi_1 \left(t\right)\right)\,\frac{\partial }{\partial t}\;\varphi_1 \left(t\right)\right)}}^2 }{2}-\frac{\textrm{ky}\,{{\left(y\left(t\right)+\textrm{len}\,a\left(t\right)\right)}}^2 }{2}+\frac{\textrm{mw}\,{{\left(\frac{\partial }{\partial t}\;y\left(t\right)-\sigma_2 +e\,\cos \left(\varphi_2 \left(t\right)\right)\,\frac{\partial }{\partial t}\;\varphi_2 \left(t\right)\right)}}^2 }{2}+\frac{\textrm{mw}\,{{\left(\sigma_1 -e\,\sin \left(\varphi_1 \left(t\right)\right)\,\frac{\partial }{\partial t}\;\varphi_1 \left(t\right)\right)}}^2 }{2}+\frac{\textrm{mw}\,{{\left(\sigma_1 -e\,\sin \left(\varphi_2 \left(t\right)\right)\,\frac{\partial }{\partial t}\;\varphi_2 \left(t\right)\right)}}^2 }{2}+\frac{\textrm{Ic}\,{{\left(\frac{\partial }{\partial t}\;a\left(t\right)\right)}}^2 }{2}+\frac{I_0 \,{{\left(\frac{\partial }{\partial t}\;\varphi_1 \left(t\right)\right)}}^2 }{2}+\frac{I_0 \,{{\left(\frac{\partial }{\partial t}\;\varphi_2 \left(t\right)\right)}}^2 }{2}+\frac{m\,{{\left(\frac{\partial }{\partial t}\;y\left(t\right)\right)}}^2 }{2}-g\,\textrm{mw}\,{\left(y\left(t\right)+e\,\sin \left(\varphi_1 \left(t\right)\right)+\textrm{OC}\,\sin \left(\sigma_3 \right)\right)}-g\,\textrm{mw}\,{\left(y\left(t\right)+e\,\sin \left(\varphi_2 \left(t\right)\right)+\textrm{OC}\,\sin \left(\sigma_3 \right)\right)}-g\,m\,y\left(t\right)-\frac{{\textrm{hgt}}^2 \,\textrm{kx}\,{\textrm{xvar}}^4 \,{a\left(t\right)}^2 }{2}\\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 =\textrm{OC}\,\sin \left(\sigma_3 \right)\,\frac{\partial }{\partial t}\;a\left(t\right)\\
+\mathrm{}\\
+\;\;\sigma_2 =\textrm{OC}\,\cos \left(\sigma_3 \right)\,\frac{\partial }{\partial t}\;a\left(t\right)\\
+\mathrm{}\\
+\;\;\sigma_3 =\frac{\pi }{3}-a\left(t\right)
+\end{array}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+Lvar = subs(Lvar, y, yvar)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+Lvar(t) = 
+    $\displaystyle \begin{array}{l}
+\frac{\textrm{mw}\,{{\left(\sigma_2 -e\,\cos \left(\varphi_1 \left(t\right)\right)\,\frac{\partial }{\partial t}\;\varphi_1 \left(t\right)\right)}}^2 }{2}+\frac{\textrm{mw}\,{{\left(\sigma_2 -e\,\cos \left(\varphi_2 \left(t\right)\right)\,\frac{\partial }{\partial t}\;\varphi_2 \left(t\right)\right)}}^2 }{2}+\frac{\textrm{mw}\,{{\left(\sigma_1 -e\,\sin \left(\varphi_1 \left(t\right)\right)\,\frac{\partial }{\partial t}\;\varphi_1 \left(t\right)\right)}}^2 }{2}+\frac{\textrm{mw}\,{{\left(\sigma_1 -e\,\sin \left(\varphi_2 \left(t\right)\right)\,\frac{\partial }{\partial t}\;\varphi_2 \left(t\right)\right)}}^2 }{2}-\frac{\textrm{ky}\,{{\left(\textrm{yvar}+\textrm{len}\,a\left(t\right)\right)}}^2 }{2}+\frac{\textrm{Ic}\,{{\left(\frac{\partial }{\partial t}\;a\left(t\right)\right)}}^2 }{2}+\frac{I_0 \,{{\left(\frac{\partial }{\partial t}\;\varphi_1 \left(t\right)\right)}}^2 }{2}+\frac{I_0 \,{{\left(\frac{\partial }{\partial t}\;\varphi_2 \left(t\right)\right)}}^2 }{2}-g\,\textrm{mw}\,{\left(\textrm{yvar}+e\,\sin \left(\varphi_1 \left(t\right)\right)+\textrm{OC}\,\sin \left(\sigma_3 \right)\right)}-g\,\textrm{mw}\,{\left(\textrm{yvar}+e\,\sin \left(\varphi_2 \left(t\right)\right)+\textrm{OC}\,\sin \left(\sigma_3 \right)\right)}-g\,m\,\textrm{yvar}-\frac{{\textrm{hgt}}^2 \,\textrm{kx}\,{\textrm{xvar}}^4 \,{a\left(t\right)}^2 }{2}\\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 =\textrm{OC}\,\sin \left(\sigma_3 \right)\,\frac{\partial }{\partial t}\;a\left(t\right)\\
+\mathrm{}\\
+\;\;\sigma_2 =\textrm{OC}\,\cos \left(\sigma_3 \right)\,\frac{\partial }{\partial t}\;a\left(t\right)\\
+\mathrm{}\\
+\;\;\sigma_3 =\frac{\pi }{3}-a\left(t\right)
+\end{array}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+Lvar = subs(Lvar, a, avar)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+Lvar(t) = 
+    $\displaystyle \begin{array}{l}
+\frac{I_0 \,\sigma_2 }{2}-\frac{\textrm{ky}\,{{\left(\textrm{yvar}+\textrm{avar}\,\textrm{len}\right)}}^2 }{2}+\frac{I_0 \,\sigma_1 }{2}-g\,m\,\textrm{yvar}-g\,\textrm{mw}\,{\left(\textrm{yvar}+e\,\sin \left(\varphi_1 \left(t\right)\right)-\sigma_3 \right)}-g\,\textrm{mw}\,{\left(\textrm{yvar}+e\,\sin \left(\varphi_2 \left(t\right)\right)-\sigma_3 \right)}-\frac{{\textrm{avar}}^2 \,{\textrm{hgt}}^2 \,\textrm{kx}\,{\textrm{xvar}}^4 }{2}+\frac{e^2 \,\textrm{mw}\,{\cos \left(\varphi_1 \left(t\right)\right)}^2 \,\sigma_2 }{2}+\frac{e^2 \,\textrm{mw}\,{\cos \left(\varphi_2 \left(t\right)\right)}^2 \,\sigma_1 }{2}+\frac{e^2 \,\textrm{mw}\,{\sin \left(\varphi_1 \left(t\right)\right)}^2 \,\sigma_2 }{2}+\frac{e^2 \,\textrm{mw}\,{\sin \left(\varphi_2 \left(t\right)\right)}^2 \,\sigma_1 }{2}\\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 ={{\left(\frac{\partial }{\partial t}\;\varphi_2 \left(t\right)\right)}}^2 \\
+\mathrm{}\\
+\;\;\sigma_2 ={{\left(\frac{\partial }{\partial t}\;\varphi_1 \left(t\right)\right)}}^2 \\
+\mathrm{}\\
+\;\;\sigma_3 =\textrm{OC}\,\sin \left(\textrm{avar}-\frac{\pi }{3}\right)
+\end{array}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+Lvar = subs(Lvar, phi1, phi1var)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+Lvar(t) = 
+    $\displaystyle \begin{array}{l}
+\frac{I_0 \,\sigma_1 }{2}-\frac{\textrm{ky}\,{{\left(\textrm{yvar}+\textrm{avar}\,\textrm{len}\right)}}^2 }{2}-g\,\textrm{mw}\,{\left(\textrm{yvar}-\sigma_2 +e\,\sin \left(\textrm{phi1var}\right)\right)}-g\,m\,\textrm{yvar}-g\,\textrm{mw}\,{\left(\textrm{yvar}+e\,\sin \left(\varphi_2 \left(t\right)\right)-\sigma_2 \right)}-\frac{{\textrm{avar}}^2 \,{\textrm{hgt}}^2 \,\textrm{kx}\,{\textrm{xvar}}^4 }{2}+\frac{e^2 \,\textrm{mw}\,{\cos \left(\varphi_2 \left(t\right)\right)}^2 \,\sigma_1 }{2}+\frac{e^2 \,\textrm{mw}\,{\sin \left(\varphi_2 \left(t\right)\right)}^2 \,\sigma_1 }{2}\\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 ={{\left(\frac{\partial }{\partial t}\;\varphi_2 \left(t\right)\right)}}^2 \\
+\mathrm{}\\
+\;\;\sigma_2 =\textrm{OC}\,\sin \left(\textrm{avar}-\frac{\pi }{3}\right)
+\end{array}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+Lvar = subs(Lvar, phi2, phi2var)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+Lvar(t) = 
+    $\displaystyle -\frac{\textrm{ky}\,{{\left(\textrm{yvar}+\textrm{avar}\,\textrm{len}\right)}}^2 }{2}-g\,\textrm{mw}\,{\left(\textrm{yvar}-\textrm{OC}\,\sin \left(\textrm{avar}-\frac{\pi }{3}\right)+e\,\sin \left(\textrm{phi1var}\right)\right)}-g\,\textrm{mw}\,{\left(\textrm{yvar}-\textrm{OC}\,\sin \left(\textrm{avar}-\frac{\pi }{3}\right)+e\,\sin \left(\textrm{phi2var}\right)\right)}-g\,m\,\textrm{yvar}-\frac{{\textrm{avar}}^2 \,{\textrm{hgt}}^2 \,\textrm{kx}\,{\textrm{xvar}}^4 }{2}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+Lvar = subs(Lvar, x_dot, x_dotvar)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+Lvar(t) = 
+    $\displaystyle -\frac{\textrm{ky}\,{{\left(\textrm{yvar}+\textrm{avar}\,\textrm{len}\right)}}^2 }{2}-g\,\textrm{mw}\,{\left(\textrm{yvar}-\textrm{OC}\,\sin \left(\textrm{avar}-\frac{\pi }{3}\right)+e\,\sin \left(\textrm{phi1var}\right)\right)}-g\,\textrm{mw}\,{\left(\textrm{yvar}-\textrm{OC}\,\sin \left(\textrm{avar}-\frac{\pi }{3}\right)+e\,\sin \left(\textrm{phi2var}\right)\right)}-g\,m\,\textrm{yvar}-\frac{{\textrm{avar}}^2 \,{\textrm{hgt}}^2 \,\textrm{kx}\,{\textrm{xvar}}^4 }{2}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+Lvar = subs(Lvar, y_dot, y_dotvar)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+Lvar(t) = 
+    $\displaystyle -\frac{\textrm{ky}\,{{\left(\textrm{yvar}+\textrm{avar}\,\textrm{len}\right)}}^2 }{2}-g\,\textrm{mw}\,{\left(\textrm{yvar}-\textrm{OC}\,\sin \left(\textrm{avar}-\frac{\pi }{3}\right)+e\,\sin \left(\textrm{phi1var}\right)\right)}-g\,\textrm{mw}\,{\left(\textrm{yvar}-\textrm{OC}\,\sin \left(\textrm{avar}-\frac{\pi }{3}\right)+e\,\sin \left(\textrm{phi2var}\right)\right)}-g\,m\,\textrm{yvar}-\frac{{\textrm{avar}}^2 \,{\textrm{hgt}}^2 \,\textrm{kx}\,{\textrm{xvar}}^4 }{2}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+Lvar = subs(Lvar, phi1_dot, phi1_dotvar)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+Lvar(t) = 
+    $\displaystyle -\frac{\textrm{ky}\,{{\left(\textrm{yvar}+\textrm{avar}\,\textrm{len}\right)}}^2 }{2}-g\,\textrm{mw}\,{\left(\textrm{yvar}-\textrm{OC}\,\sin \left(\textrm{avar}-\frac{\pi }{3}\right)+e\,\sin \left(\textrm{phi1var}\right)\right)}-g\,\textrm{mw}\,{\left(\textrm{yvar}-\textrm{OC}\,\sin \left(\textrm{avar}-\frac{\pi }{3}\right)+e\,\sin \left(\textrm{phi2var}\right)\right)}-g\,m\,\textrm{yvar}-\frac{{\textrm{avar}}^2 \,{\textrm{hgt}}^2 \,\textrm{kx}\,{\textrm{xvar}}^4 }{2}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+Lvar = subs(Lvar, phi2_dot, phi2_dotvar)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+Lvar(t) = 
+    $\displaystyle -\frac{\textrm{ky}\,{{\left(\textrm{yvar}+\textrm{avar}\,\textrm{len}\right)}}^2 }{2}-g\,\textrm{mw}\,{\left(\textrm{yvar}-\textrm{OC}\,\sin \left(\textrm{avar}-\frac{\pi }{3}\right)+e\,\sin \left(\textrm{phi1var}\right)\right)}-g\,\textrm{mw}\,{\left(\textrm{yvar}-\textrm{OC}\,\sin \left(\textrm{avar}-\frac{\pi }{3}\right)+e\,\sin \left(\textrm{phi2var}\right)\right)}-g\,m\,\textrm{yvar}-\frac{{\textrm{avar}}^2 \,{\textrm{hgt}}^2 \,\textrm{kx}\,{\textrm{xvar}}^4 }{2}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+Nvar = subs(N, x, xvar)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+Nvar(t) = 
+    $\displaystyle \frac{\textrm{by}\,{{\left(\textrm{len}\,\frac{\partial }{\partial t}\;a\left(t\right)+\frac{\partial }{\partial t}\;y\left(t\right)\right)}}^2 }{2}+\frac{\textrm{bx}\,{\textrm{hgt}}^2 \,{{\left(\frac{\partial }{\partial t}\;a\left(t\right)\right)}}^2 }{2}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+Nvar = subs(Nvar, y, yvar)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+Nvar(t) = 
+    $\displaystyle \frac{\textrm{bx}\,{\textrm{hgt}}^2 \,{{\left(\frac{\partial }{\partial t}\;a\left(t\right)\right)}}^2 }{2}+\frac{\textrm{by}\,{\textrm{len}}^2 \,{{\left(\frac{\partial }{\partial t}\;a\left(t\right)\right)}}^2 }{2}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+Nvar = subs(Nvar, a, avar)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+Nvar(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+Nvar = subs(Nvar, phi1, phi1var)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+Nvar(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+Nvar = subs(Nvar, phi2, phi2var)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+Nvar(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+Nvar = subs(Nvar, x_dot, x_dotvar)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+Nvar(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+Nvar = subs(Nvar, y_dot, y_dotvar)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+Nvar(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+Nvar = subs(Nvar, phi1_dot, phi1_dotvar)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+Nvar(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+Nvar = subs(Nvar, phi2_dot, phi2_dotvar)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+Nvar(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+%
+dldx_dotvar = diff(Lvar, x_dotvar)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldx_dotvar(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldy_dotvar = diff(Lvar, y_dotvar)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldy_dotvar(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dlda_dotvar = diff(Lvar, a_dotvar)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dlda_dotvar(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldphi1_dotvar = diff(Lvar, phi1_dotvar)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldphi1_dotvar(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldphi2_dotvar = diff(Lvar, phi2_dotvar)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldphi2_dotvar(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndx_dotvar = diff(Nvar, x_dotvar)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndx_dotvar(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndy_dotvar = diff(Nvar, y_dotvar)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndy_dotvar(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dnda_dotvar = diff(Nvar, a_dotvar)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dnda_dotvar(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndphi1_dotvar = diff(Nvar, phi1_dotvar)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndphi1_dotvar(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndphi2_dotvar = diff(Nvar, phi2_dotvar)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndphi2_dotvar(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+
+\begin{par}
+\begin{flushleft}
+i zamieniamy ze zmiennych spowrotem na funkcje
+\end{flushleft}
+\end{par}
+
+\begin{par}
+\begin{flushleft}
+najpierw pochodne lagrangianu
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+%zmian dldx_dotvar na dldx_dot
+dldx_dot = subs(dldx_dotvar, xvar, x)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldx_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldx_dot = subs(dldx_dot, yvar, y)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldx_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldx_dot = subs(dldx_dot, avar, a)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldx_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldx_dot = subs(dldx_dot, phi1var, phi1)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldx_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldx_dot = subs(dldx_dot, phi2var, phi2)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldx_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldx_dot = subs(dldx_dot, x_dotvar, x_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldx_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldx_dot = subs(dldx_dot, y_dotvar, y_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldx_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldx_dot = subs(dldx_dot, phi1_dotvar, phi1_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldx_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldx_dot = subs(dldx_dot, phi2_dotvar, phi2_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldx_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+
+%zmiana dldy_dotvar na dldy_dot
+dldy_dot = subs(dldy_dotvar, xvar, x)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldy_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldy_dot = subs(dldy_dot, yvar, y)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldy_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldy_dot = subs(dldy_dot, avar, a)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldy_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldy_dot = subs(dldy_dot, phi1var, phi1)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldy_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldy_dot = subs(dldy_dot, phi2var, phi2)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldy_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldy_dot = subs(dldy_dot, x_dotvar, x_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldy_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldy_dot = subs(dldy_dot, y_dotvar, y_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldy_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldy_dot = subs(dldy_dot, phi1_dotvar, phi1_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldy_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldy_dot = subs(dldy_dot, phi2_dotvar, phi2_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldy_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+
+%zmiana dlda_dotvar na dlda_dot
+dlda_dot = subs(dlda_dotvar, xvar, x)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dlda_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dlda_dot = subs(dlda_dot, yvar, y)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dlda_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dlda_dot = subs(dlda_dot, avar, a)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dlda_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dlda_dot = subs(dlda_dot, phi1var, phi1)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dlda_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dlda_dot = subs(dlda_dot, phi2var, phi2)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dlda_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dlda_dot = subs(dlda_dot, x_dotvar, x_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dlda_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dlda_dot = subs(dlda_dot, y_dotvar, y_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dlda_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dlda_dot = subs(dlda_dot, phi1_dotvar, phi1_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dlda_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dlda_dot = subs(dlda_dot, phi2_dotvar, phi2_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dlda_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+
+%zmiana dldphi1_dotvar na dldphi1_dot
+dldphi1_dot = subs(dldphi1_dotvar, xvar, x)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldphi1_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldphi1_dot = subs(dldphi1_dot, yvar, y)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldphi1_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldphi1_dot = subs(dldphi1_dot, avar, a)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldphi1_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldphi1_dot = subs(dldphi1_dot, phi1var, phi1)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldphi1_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldphi1_dot = subs(dldphi1_dot, phi2var, phi2)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldphi1_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldphi1_dot = subs(dldphi1_dot, x_dotvar, x_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldphi1_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldphi1_dot = subs(dldphi1_dot, y_dotvar, y_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldphi1_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldphi1_dot = subs(dldphi1_dot, phi1_dotvar, phi1_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldphi1_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldphi1_dot = subs(dldphi1_dot, phi2_dotvar, phi2_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldphi1_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+
+
+%zmiana dldphi2_dotvar na dldphi2_dot
+dldphi2_dot = subs(dldphi2_dotvar, xvar, x)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldphi2_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldphi2_dot = subs(dldphi2_dot, yvar, y)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldphi2_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldphi2_dot = subs(dldphi2_dot, avar, a)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldphi2_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldphi2_dot = subs(dldphi2_dot, phi1var, phi1)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldphi2_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldphi2_dot = subs(dldphi2_dot, phi2var, phi2)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldphi2_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldphi2_dot = subs(dldphi2_dot, x_dotvar, x_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldphi2_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldphi2_dot = subs(dldphi2_dot, y_dotvar, y_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldphi2_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldphi2_dot = subs(dldphi2_dot, phi1_dotvar, phi1_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldphi2_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldphi2_dot = subs(dldphi2_dot, phi2_dotvar, phi2_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldphi2_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+
+\begin{par}
+\begin{flushleft}
+i pochodne dysypacji
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+%zmian dndx_dotvar na dndx_dot
+dndx_dot = subs(dndx_dotvar, xvar, x)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndx_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndx_dot = subs(dndx_dot, yvar, y)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndx_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndx_dot = subs(dndx_dot, avar, a)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndx_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndx_dot = subs(dndx_dot, phi1var, phi1)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndx_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndx_dot = subs(dndx_dot, phi2var, phi2)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndx_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndx_dot = subs(dndx_dot, x_dotvar, x_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndx_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndx_dot = subs(dndx_dot, y_dotvar, y_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndx_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndx_dot = subs(dndx_dot, phi1_dotvar, phi1_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndx_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndx_dot = subs(dndx_dot, phi2_dotvar, phi2_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndx_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+
+%zmiana dndy_dotvar na dndy_dot
+dndy_dot = subs(dndy_dotvar, xvar, x)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndy_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndy_dot = subs(dndy_dot, yvar, y)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndy_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndy_dot = subs(dndy_dot, avar, a)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndy_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndy_dot = subs(dndy_dot, phi1var, phi1)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndy_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndy_dot = subs(dndy_dot, phi2var, phi2)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndy_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndy_dot = subs(dndy_dot, x_dotvar, x_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndy_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndy_dot = subs(dndy_dot, y_dotvar, y_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndy_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndy_dot = subs(dndy_dot, phi1_dotvar, phi1_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndy_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndy_dot = subs(dndy_dot, phi2_dotvar, phi2_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndy_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+
+%zmiana dnda_dotvar na dnda_dot
+dnda_dot = subs(dnda_dotvar, xvar, x)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dnda_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dnda_dot = subs(dnda_dot, yvar, y)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dnda_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dnda_dot = subs(dnda_dot, avar, a)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dnda_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dnda_dot = subs(dnda_dot, phi1var, phi1)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dnda_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dnda_dot = subs(dnda_dot, phi2var, phi2)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dnda_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dnda_dot = subs(dnda_dot, x_dotvar, x_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dnda_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dnda_dot = subs(dnda_dot, y_dotvar, y_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dnda_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dnda_dot = subs(dnda_dot, phi1_dotvar, phi1_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dnda_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dnda_dot = subs(dnda_dot, phi2_dotvar, phi2_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dnda_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+
+%zmiana dndphi1_dotvar na dndphi1_dot
+dndphi1_dot = subs(dndphi1_dotvar, xvar, x)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndphi1_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndphi1_dot = subs(dndphi1_dot, yvar, y)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndphi1_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndphi1_dot = subs(dndphi1_dot, avar, a)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndphi1_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndphi1_dot = subs(dndphi1_dot, phi1var, phi1)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndphi1_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndphi1_dot = subs(dndphi1_dot, phi2var, phi2)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndphi1_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndphi1_dot = subs(dndphi1_dot, x_dotvar, x_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndphi1_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndphi1_dot = subs(dndphi1_dot, y_dotvar, y_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndphi1_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndphi1_dot = subs(dndphi1_dot, phi1_dotvar, phi1_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndphi1_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndphi1_dot = subs(dndphi1_dot, phi2_dotvar, phi2_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndphi1_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+
+
+%zmiana dndphi2_dotvar na dndphi2_dot
+dndphi2_dot = subs(dndphi2_dotvar, xvar, x)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndphi2_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndphi2_dot = subs(dndphi2_dot, yvar, y)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndphi2_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndphi2_dot = subs(dndphi2_dot, avar, a)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndphi2_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndphi2_dot = subs(dndphi2_dot, phi1var, phi1)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndphi2_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndphi2_dot = subs(dndphi2_dot, phi2var, phi2)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndphi2_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndphi2_dot = subs(dndphi2_dot, x_dotvar, x_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndphi2_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndphi2_dot = subs(dndphi2_dot, y_dotvar, y_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndphi2_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndphi2_dot = subs(dndphi2_dot, phi1_dotvar, phi1_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndphi2_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dndphi2_dot = subs(dndphi2_dot, phi2_dotvar, phi2_dot)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dndphi2_dot(t) = 
+    $\displaystyle 0$
+\end{matlabsymbolicoutput}
+
+\begin{par}
+\begin{flushleft}
+I budujemy rownania
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+ddt_dlddqi = [diff(dldx_dot, t); diff(dldy_dot, t); diff(dlda_dot, t); diff(dldphi1_dot, t); diff(dldphi2_dot, t)]
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+ddt_dlddqi(t) = 
+    $\displaystyle \left(\begin{array}{c}
+0\\
+0\\
+0\\
+0\\
+0
+\end{array}\right)$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dldqi = [dldx; dldy; dlda; dldphi1; dldphi2]
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dldqi(t) = 
+    $\displaystyle \begin{array}{l}
+\left(\begin{array}{c}
+e\,\textrm{mw}\,\cos \left(\varphi_2 \left(t\right)\right)\,\sigma_7 -2\,\textrm{mw}\,\sigma_6 -2\,{\textrm{hgt}}^2 \,\textrm{kx}\,{a\left(t\right)}^2 \,{x\left(t\right)}^3 -e\,\textrm{mw}\,\cos \left(\varphi_1 \left(t\right)\right)\,\sigma_8 -m\,\sigma_6 -e\,\textrm{mw}\,\sin \left(\varphi_1 \left(t\right)\right)\,\sigma_4 +e\,\textrm{mw}\,\sin \left(\varphi_2 \left(t\right)\right)\,\sigma_3 \\
+e\,\textrm{mw}\,\sin \left(\varphi_1 \left(t\right)\right)\,\sigma_8 -2\,\textrm{mw}\,\sigma_5 -g\,m-2\,g\,\textrm{mw}-\textrm{ky}\,y\left(t\right)-\textrm{ky}\,\textrm{len}\,a\left(t\right)-m\,\sigma_5 +e\,\textrm{mw}\,\sin \left(\varphi_2 \left(t\right)\right)\,\sigma_7 -e\,\textrm{mw}\,\cos \left(\varphi_1 \left(t\right)\right)\,\sigma_4 -e\,\textrm{mw}\,\cos \left(\varphi_2 \left(t\right)\right)\,\sigma_3 +2\,\textrm{OC}\,\textrm{mw}\,\sin \left(\sigma_9 \right)\,\sigma_2 +2\,\textrm{OC}\,\textrm{mw}\,\cos \left(\sigma_9 \right)\,\sigma_1 \\
+2\,\textrm{OC}\,g\,\textrm{mw}\,\cos \left(\sigma_9 \right)-\textrm{ky}\,\textrm{len}\,y\left(t\right)-\textrm{ky}\,{\textrm{len}}^2 \,a\left(t\right)-\textrm{Ic}\,\sigma_1 -2\,{\textrm{OC}}^2 \,\textrm{mw}\,{\cos \left(\sigma_9 \right)}^2 \,\sigma_1 -{\textrm{hgt}}^2 \,\textrm{kx}\,a\left(t\right)\,{x\left(t\right)}^4 -2\,{\textrm{OC}}^2 \,\textrm{mw}\,{\sin \left(\sigma_9 \right)}^2 \,\sigma_1 +2\,\textrm{OC}\,\textrm{mw}\,\cos \left(\sigma_9 \right)\,\sigma_5 +\textrm{OC}\,e\,\textrm{mw}\,\cos \left(\varphi_1 \left(t\right)\right)\,\sin \left(\sigma_9 \right)\,\sigma_8 -\textrm{OC}\,e\,\textrm{mw}\,\sin \left(\varphi_1 \left(t\right)\right)\,\cos \left(\sigma_9 \right)\,\sigma_8 +\textrm{OC}\,e\,\textrm{mw}\,\cos \left(\varphi_2 \left(t\right)\right)\,\sin \left(\sigma_9 \right)\,\sigma_7 -\textrm{OC}\,e\,\textrm{mw}\,\sin \left(\varphi_2 \left(t\right)\right)\,\cos \left(\sigma_9 \right)\,\sigma_7 +\textrm{OC}\,e\,\textrm{mw}\,\cos \left(\varphi_1 \left(t\right)\right)\,\cos \left(\sigma_9 \right)\,\sigma_4 +\textrm{OC}\,e\,\textrm{mw}\,\cos \left(\varphi_2 \left(t\right)\right)\,\cos \left(\sigma_9 \right)\,\sigma_3 +\textrm{OC}\,e\,\textrm{mw}\,\sin \left(\varphi_1 \left(t\right)\right)\,\sin \left(\sigma_9 \right)\,\sigma_4 +\textrm{OC}\,e\,\textrm{mw}\,\sin \left(\varphi_2 \left(t\right)\right)\,\sin \left(\sigma_9 \right)\,\sigma_3 \\
+\textrm{OC}\,e\,\textrm{mw}\,\cos \left(\varphi_1 \left(t\right)\right)\,\sin \left(\sigma_9 \right)\,\sigma_2 -e^2 \,\textrm{mw}\,{\cos \left(\varphi_1 \left(t\right)\right)}^2 \,\sigma_4 -e^2 \,\textrm{mw}\,{\sin \left(\varphi_1 \left(t\right)\right)}^2 \,\sigma_4 -e\,\textrm{mw}\,\cos \left(\varphi_1 \left(t\right)\right)\,\sigma_5 -e\,\textrm{mw}\,\sin \left(\varphi_1 \left(t\right)\right)\,\sigma_6 -e\,g\,\textrm{mw}\,\cos \left(\varphi_1 \left(t\right)\right)-I_0 \,\sigma_4 -\textrm{OC}\,e\,\textrm{mw}\,\sin \left(\varphi_1 \left(t\right)\right)\,\cos \left(\sigma_9 \right)\,\sigma_2 +\textrm{OC}\,e\,\textrm{mw}\,\cos \left(\varphi_1 \left(t\right)\right)\,\cos \left(\sigma_9 \right)\,\sigma_1 +\textrm{OC}\,e\,\textrm{mw}\,\sin \left(\varphi_1 \left(t\right)\right)\,\sin \left(\sigma_9 \right)\,\sigma_1 \\
+e\,\textrm{mw}\,\sin \left(\varphi_2 \left(t\right)\right)\,\sigma_6 -e^2 \,\textrm{mw}\,{\cos \left(\varphi_2 \left(t\right)\right)}^2 \,\sigma_3 -e^2 \,\textrm{mw}\,{\sin \left(\varphi_2 \left(t\right)\right)}^2 \,\sigma_3 -e\,\textrm{mw}\,\cos \left(\varphi_2 \left(t\right)\right)\,\sigma_5 -I_0 \,\sigma_3 -e\,g\,\textrm{mw}\,\cos \left(\varphi_2 \left(t\right)\right)+\textrm{OC}\,e\,\textrm{mw}\,\cos \left(\varphi_2 \left(t\right)\right)\,\sin \left(\sigma_9 \right)\,\sigma_2 -\textrm{OC}\,e\,\textrm{mw}\,\sin \left(\varphi_2 \left(t\right)\right)\,\cos \left(\sigma_9 \right)\,\sigma_2 +\textrm{OC}\,e\,\textrm{mw}\,\cos \left(\varphi_2 \left(t\right)\right)\,\cos \left(\sigma_9 \right)\,\sigma_1 +\textrm{OC}\,e\,\textrm{mw}\,\sin \left(\varphi_2 \left(t\right)\right)\,\sin \left(\sigma_9 \right)\,\sigma_1 
+\end{array}\right)\\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 =\frac{\partial^2 }{\partial t^2 }\;a\left(t\right)\\
+\mathrm{}\\
+\;\;\sigma_2 ={{\left(\frac{\partial }{\partial t}\;a\left(t\right)\right)}}^2 \\
+\mathrm{}\\
+\;\;\sigma_3 =\frac{\partial^2 }{\partial t^2 }\;\varphi_2 \left(t\right)\\
+\mathrm{}\\
+\;\;\sigma_4 =\frac{\partial^2 }{\partial t^2 }\;\varphi_1 \left(t\right)\\
+\mathrm{}\\
+\;\;\sigma_5 =\frac{\partial^2 }{\partial t^2 }\;y\left(t\right)\\
+\mathrm{}\\
+\;\;\sigma_6 =\frac{\partial^2 }{\partial t^2 }\;x\left(t\right)\\
+\mathrm{}\\
+\;\;\sigma_7 ={{\left(\frac{\partial }{\partial t}\;\varphi_2 \left(t\right)\right)}}^2 \\
+\mathrm{}\\
+\;\;\sigma_8 ={{\left(\frac{\partial }{\partial t}\;\varphi_1 \left(t\right)\right)}}^2 \\
+\mathrm{}\\
+\;\;\sigma_9 =\frac{\pi }{3}-a\left(t\right)
+\end{array}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+dnddqi = [diff(dndx_dot, t); diff(dndy_dot, t); diff(dnda_dot, t); diff(dndphi1_dot, t); diff(dndphi2_dot, t)]
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dnddqi(t) = 
+    $\displaystyle \left(\begin{array}{c}
+0\\
+0\\
+0\\
+0\\
+0
+\end{array}\right)$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+m_eqns = -ddt_dlddqi+dldqi-dnddqi
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+m_eqns(t) = 
+    $\displaystyle \begin{array}{l}
+\left(\begin{array}{c}
+e\,\textrm{mw}\,\cos \left(\varphi_2 \left(t\right)\right)\,\sigma_7 -2\,\textrm{mw}\,\sigma_6 -2\,{\textrm{hgt}}^2 \,\textrm{kx}\,{a\left(t\right)}^2 \,{x\left(t\right)}^3 -e\,\textrm{mw}\,\cos \left(\varphi_1 \left(t\right)\right)\,\sigma_8 -m\,\sigma_6 -e\,\textrm{mw}\,\sin \left(\varphi_1 \left(t\right)\right)\,\sigma_4 +e\,\textrm{mw}\,\sin \left(\varphi_2 \left(t\right)\right)\,\sigma_3 \\
+e\,\textrm{mw}\,\sin \left(\varphi_1 \left(t\right)\right)\,\sigma_8 -2\,\textrm{mw}\,\sigma_5 -g\,m-2\,g\,\textrm{mw}-\textrm{ky}\,y\left(t\right)-\textrm{ky}\,\textrm{len}\,a\left(t\right)-m\,\sigma_5 +e\,\textrm{mw}\,\sin \left(\varphi_2 \left(t\right)\right)\,\sigma_7 -e\,\textrm{mw}\,\cos \left(\varphi_1 \left(t\right)\right)\,\sigma_4 -e\,\textrm{mw}\,\cos \left(\varphi_2 \left(t\right)\right)\,\sigma_3 +2\,\textrm{OC}\,\textrm{mw}\,\sin \left(\sigma_9 \right)\,\sigma_2 +2\,\textrm{OC}\,\textrm{mw}\,\cos \left(\sigma_9 \right)\,\sigma_1 \\
+2\,\textrm{OC}\,g\,\textrm{mw}\,\cos \left(\sigma_9 \right)-\textrm{ky}\,\textrm{len}\,y\left(t\right)-\textrm{ky}\,{\textrm{len}}^2 \,a\left(t\right)-\textrm{Ic}\,\sigma_1 -2\,{\textrm{OC}}^2 \,\textrm{mw}\,{\cos \left(\sigma_9 \right)}^2 \,\sigma_1 -{\textrm{hgt}}^2 \,\textrm{kx}\,a\left(t\right)\,{x\left(t\right)}^4 -2\,{\textrm{OC}}^2 \,\textrm{mw}\,{\sin \left(\sigma_9 \right)}^2 \,\sigma_1 +2\,\textrm{OC}\,\textrm{mw}\,\cos \left(\sigma_9 \right)\,\sigma_5 +\textrm{OC}\,e\,\textrm{mw}\,\cos \left(\varphi_1 \left(t\right)\right)\,\sin \left(\sigma_9 \right)\,\sigma_8 -\textrm{OC}\,e\,\textrm{mw}\,\sin \left(\varphi_1 \left(t\right)\right)\,\cos \left(\sigma_9 \right)\,\sigma_8 +\textrm{OC}\,e\,\textrm{mw}\,\cos \left(\varphi_2 \left(t\right)\right)\,\sin \left(\sigma_9 \right)\,\sigma_7 -\textrm{OC}\,e\,\textrm{mw}\,\sin \left(\varphi_2 \left(t\right)\right)\,\cos \left(\sigma_9 \right)\,\sigma_7 +\textrm{OC}\,e\,\textrm{mw}\,\cos \left(\varphi_1 \left(t\right)\right)\,\cos \left(\sigma_9 \right)\,\sigma_4 +\textrm{OC}\,e\,\textrm{mw}\,\cos \left(\varphi_2 \left(t\right)\right)\,\cos \left(\sigma_9 \right)\,\sigma_3 +\textrm{OC}\,e\,\textrm{mw}\,\sin \left(\varphi_1 \left(t\right)\right)\,\sin \left(\sigma_9 \right)\,\sigma_4 +\textrm{OC}\,e\,\textrm{mw}\,\sin \left(\varphi_2 \left(t\right)\right)\,\sin \left(\sigma_9 \right)\,\sigma_3 \\
+\textrm{OC}\,e\,\textrm{mw}\,\cos \left(\varphi_1 \left(t\right)\right)\,\sin \left(\sigma_9 \right)\,\sigma_2 -e^2 \,\textrm{mw}\,{\cos \left(\varphi_1 \left(t\right)\right)}^2 \,\sigma_4 -e^2 \,\textrm{mw}\,{\sin \left(\varphi_1 \left(t\right)\right)}^2 \,\sigma_4 -e\,\textrm{mw}\,\cos \left(\varphi_1 \left(t\right)\right)\,\sigma_5 -e\,\textrm{mw}\,\sin \left(\varphi_1 \left(t\right)\right)\,\sigma_6 -e\,g\,\textrm{mw}\,\cos \left(\varphi_1 \left(t\right)\right)-I_0 \,\sigma_4 -\textrm{OC}\,e\,\textrm{mw}\,\sin \left(\varphi_1 \left(t\right)\right)\,\cos \left(\sigma_9 \right)\,\sigma_2 +\textrm{OC}\,e\,\textrm{mw}\,\cos \left(\varphi_1 \left(t\right)\right)\,\cos \left(\sigma_9 \right)\,\sigma_1 +\textrm{OC}\,e\,\textrm{mw}\,\sin \left(\varphi_1 \left(t\right)\right)\,\sin \left(\sigma_9 \right)\,\sigma_1 \\
+e\,\textrm{mw}\,\sin \left(\varphi_2 \left(t\right)\right)\,\sigma_6 -e^2 \,\textrm{mw}\,{\cos \left(\varphi_2 \left(t\right)\right)}^2 \,\sigma_3 -e^2 \,\textrm{mw}\,{\sin \left(\varphi_2 \left(t\right)\right)}^2 \,\sigma_3 -e\,\textrm{mw}\,\cos \left(\varphi_2 \left(t\right)\right)\,\sigma_5 -I_0 \,\sigma_3 -e\,g\,\textrm{mw}\,\cos \left(\varphi_2 \left(t\right)\right)+\textrm{OC}\,e\,\textrm{mw}\,\cos \left(\varphi_2 \left(t\right)\right)\,\sin \left(\sigma_9 \right)\,\sigma_2 -\textrm{OC}\,e\,\textrm{mw}\,\sin \left(\varphi_2 \left(t\right)\right)\,\cos \left(\sigma_9 \right)\,\sigma_2 +\textrm{OC}\,e\,\textrm{mw}\,\cos \left(\varphi_2 \left(t\right)\right)\,\cos \left(\sigma_9 \right)\,\sigma_1 +\textrm{OC}\,e\,\textrm{mw}\,\sin \left(\varphi_2 \left(t\right)\right)\,\sin \left(\sigma_9 \right)\,\sigma_1 
+\end{array}\right)\\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 =\frac{\partial^2 }{\partial t^2 }\;a\left(t\right)\\
+\mathrm{}\\
+\;\;\sigma_2 ={{\left(\frac{\partial }{\partial t}\;a\left(t\right)\right)}}^2 \\
+\mathrm{}\\
+\;\;\sigma_3 =\frac{\partial^2 }{\partial t^2 }\;\varphi_2 \left(t\right)\\
+\mathrm{}\\
+\;\;\sigma_4 =\frac{\partial^2 }{\partial t^2 }\;\varphi_1 \left(t\right)\\
+\mathrm{}\\
+\;\;\sigma_5 =\frac{\partial^2 }{\partial t^2 }\;y\left(t\right)\\
+\mathrm{}\\
+\;\;\sigma_6 =\frac{\partial^2 }{\partial t^2 }\;x\left(t\right)\\
+\mathrm{}\\
+\;\;\sigma_7 ={{\left(\frac{\partial }{\partial t}\;\varphi_2 \left(t\right)\right)}}^2 \\
+\mathrm{}\\
+\;\;\sigma_8 ={{\left(\frac{\partial }{\partial t}\;\varphi_1 \left(t\right)\right)}}^2 \\
+\mathrm{}\\
+\;\;\sigma_9 =\frac{\pi }{3}-a\left(t\right)
+\end{array}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+
+dsolve(m_eqns ==0)
+\end{matlabcode}
+\begin{matlaboutput}
+Warning: Unable to find explicit solution.
+ 
+ans =
+ 
+[ empty sym ]
+ 
+\end{matlaboutput}
+
+\end{document}
